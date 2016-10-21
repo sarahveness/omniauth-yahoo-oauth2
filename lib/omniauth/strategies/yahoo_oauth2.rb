@@ -33,6 +33,7 @@ module OmniAuth
         
         auth = "Basic #{Base64.strict_encode64("#{options.client_id}:#{options.client_secret}")}"
         
+	callback_url = callback_url.split('?').first if callback_url.include?('?')
         token = client.get_token(
           { redirect_uri: callback_url, code: verifier, grant_type: 'authorization_code', headers: { 'Authorization' => auth } }.
           merge(token_params.to_hash(symbolize_keys: true)), deep_symbolize(options.auth_token_params))
