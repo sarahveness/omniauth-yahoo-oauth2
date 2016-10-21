@@ -36,7 +36,7 @@ module OmniAuth
 
       	curl = callback_url.split('?').first if callback_url && callback_url.include?('?')
         token = client.get_token(
-          { redirect_uri: curl, code: verifier, grant_type: 'authorization_code', headers: { 'Authorization' => auth, 'Access-Control-Allow-Origin' => 'http://jockbuff.local', 'Access-Control-Allow-Methods' => GET, POST, PUT, 'Access-Control-Allow-Headers' => 'text/plain' } }.
+          { redirect_uri: curl, code: verifier, grant_type: 'authorization_code', headers: { 'Authorization' => auth, 'Access-Control-Allow-Origin' => 'http://jockbuff.local', 'Access-Control-Allow-Methods' => 'GET, POST, PUT', 'Access-Control-Allow-Headers' => 'text/plain' } }.
           merge(token_params.to_hash(symbolize_keys: true)), deep_symbolize(options.auth_token_params))
 
         token
