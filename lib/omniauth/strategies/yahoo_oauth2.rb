@@ -31,7 +31,7 @@ module OmniAuth
 
       def build_access_token
         verifier = request.params['code']
-
+         binding.pry
         auth = "Basic #{Base64.strict_encode64("#{options.client_id}:#{options.client_secret}")}"
 
       	curl = callback_url.split('?').first if callback_url && callback_url.include?('?')
